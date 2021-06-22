@@ -22,8 +22,6 @@ mKeyDelay = 0
 mBleachDelayBefore = 0
 mBleachDelayAfter = 0
 
-mKeyPressFlag = False
-
 def readConfig(pPath):
     aStr = ""
     with open(pPath, mode="r", encoding="utf-8") as aFNo:
@@ -188,11 +186,8 @@ def sendNum(pNumStr):
             selNum(aNum, 10)
 
 def bleachPass(pList):
-    global mKeyPressFlag
-
     for aL in pList:
-        if keyboard.is_pressed(mTriggerContainer) == True and mKeyPressFlag == True:
-            mKeyPressFlag = False
+        if keyboard.is_pressed(mTriggerContainer) != True:
             break
         #debug
         print("インタラクト")
@@ -237,19 +232,14 @@ def LoadConfig():
     mBleachDelayAfter = aJson.get("BleachDelayAfter")
 
 def main():
-    global mKeyPressFlag
-
     LoadConfig()
 
     while True:
         time.sleep(mLoopDelay)
 
-        if keyboard.is_pressed(mTriggerContainer) == True and mKeyPressFlag == False:
+        if keyboard.is_pressed(mTriggerContainer) == True:
             print("Container")
-            time.sleep(mBleachDelayAfter)
-            mKeyPressFlag = True
             bleachContainer()
-            time.sleep(mBleachDelayAfter)
             continue
 
 if __name__ == "__main__":
