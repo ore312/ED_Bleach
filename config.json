@@ -1,0 +1,15 @@
+{
+    "TriggerContainer": "0",
+
+    "KeyInteract": 18,
+    "KeySelect": 57,
+    "KeyUp": 17,
+    "KeyDown": 31,
+    "KeyRight": 32,
+    "KeyLeft": 30,
+
+    "LoopDelay": 0.05,
+    "KeyDelay": 0.025,
+    "BleachDelayBefore": 0.2,
+    "BleachDelayAfter": 0.25
+}
